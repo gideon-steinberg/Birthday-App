@@ -1,7 +1,11 @@
 !!!
 %html
   %head
-    %title A Website for Jeremy
+    - unless @person
+      %title A Birthday Website
+    - else
+      %title 
+        = "A Page for #{@person}"
     %script{:src => "/vendor/jquery/jquery-2.0.3.min.js", :type => "text/javascript"}
     %script{:src => "/vendor/bootstrap/js/bootstrap.min.js", :type => "text/javascript"}
     %link{:href => "/vendor/bootstrap/css/bootstrap.min.css", :rel => "stylesheet"}/
