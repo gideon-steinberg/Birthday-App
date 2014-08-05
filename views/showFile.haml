@@ -1,0 +1,23 @@
+%div{:style => "color: #0000FF;background-color: #00FF00"}
+  .row
+    .col-lg-6
+      %form.input-group{:action => "/person/#{@person}/#{@page}", :method => "post"}
+        %span.input-group-btn
+          %button.btn.btn-default{:type => "submit"}
+            Submit new
+        %input.form-control{:type => "text", :name => "text"}
+
+  %table.table{:width => "100%"}
+    %thead
+    %tbody
+      - i = 0
+      - @text.each do |line|
+        %tr
+          %td.center{:width => "20px"}
+            %form{:action => "/person/#{@person}/delete/#{@page}", :method => "post"}
+              %input{:type => "hidden", :name => "position", :value => i}
+              %button.btn.btn-link{:type => 'submit'}
+                %i.fa.fa-minus.text-danger
+          %td
+            = line
+        - i = i + 1
