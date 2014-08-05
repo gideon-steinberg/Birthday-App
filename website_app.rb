@@ -41,21 +41,26 @@ get '/home' do
   haml :index
 end
 
+get '/person/:person' do
+  @person = params[:person]
+  haml :"/person/index"
+end
+
 get '/person/:person/pictures' do
   @files = Dir.entries "public/#{params[:person]}"
   @files.select!{|file| file if file != "." && file != ".."}
   @person = params[:person]
-  haml :pictures
+  haml :"/person/pictures"
 end
 
 get '/person/:person/:name' do
   @page = params[:name]
   @person = params[:person]
   if @page =~ /rb|db/
-    redirect :"home"
+    redirect :"/home"
   else 
     @text = readFile(File.join(params[:person], @page))
-    haml :showFile
+    haml :"/person/showFile"
   end
 end
 

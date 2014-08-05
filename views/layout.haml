@@ -13,10 +13,18 @@
       %li
         %a{:href => "/"}
           Home
-      - @links.each do |link, title|
-        %li
-          %a{:href => "/person/Jeremy/#{link}"}
-            = title
+      %li
+        %a{:href => "/person/Jeremy"}
+          Jeremy
+      %li
+        %a{:href => "/person/Barry"}
+          Barry
+    - if @person
+      %ul.breadcrumb
+        - @links.each do |link, title|
+          %li
+            %a{:href => "/person/#{@person}/#{link}"}
+              = title
     = yield 
 
   %p
