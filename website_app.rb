@@ -37,8 +37,8 @@ get '/' do
   haml :index
 end
 
-get '/home' do
-  haml :index
+get '/:thing' do
+  redirect "/"
 end
 
 get '/person/:person' do
