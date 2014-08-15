@@ -1,5 +1,4 @@
 $(document).ready(function(){
-  i = 1; 
   window.setInterval(function() {
    company_number = parseInt($("#company_number").attr("value"));
    for (i = 0; i < company_number; i++){
@@ -13,7 +12,7 @@ $(document).ready(function(){
      } else if ( parseInt(price.text()) > 1){
        price.text(parseInt(price.text()) - 1);
      }
-     ran = (Math.floor(Math.random()*20) - 10) / 100;
+     ran = (Math.floor(Math.random()*10) - 5) / 100;
      newTendency = tendencyVal + ran;
      if (newTendency < 0.05){
        newTendency = 0.05;
