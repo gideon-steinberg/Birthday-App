@@ -18,7 +18,10 @@
       %td{:id => "money"}
         1000
 
-- companies = ["Cats Inc", "Dogs Ltd"]
+- companies = []
+- companies << ["Cats Inc", "Dogs Ltd", "Putter LLC", "Iron Corp", "Wood Foundation", "Hybrid Branch"]
+- companies << ["Birdy Partnership", "Bunker Traders", "Rough Trust"]
+- companies.flatten!
 %div{:id => "company_number", :value => companies.size}
 %p
   Note: Tendency is how likely the stock is to increase/decrease from 0 - 1
