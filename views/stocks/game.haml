@@ -7,4 +7,48 @@
 
 %script{:src => "/stocks/game.js", :type => "text/javascript"}
 
+
+%table.table{:width => "100%"}
+  %thead
+  %tbody
+    %tr
+      %td
+        Current Money
+    %tr
+      %td{:id => "money"}
+        1000
+
+- companies = ["Cats Inc", "Dogs Ltd"]
+%table.table{:width => "100%"}
+  %thead
+  %tbody
+    %tr
+      %td
+        Name
+      %td
+        Price
+      %td
+        Tendency
+      %td
+        Number Held
+      %td
+        Buy
+      %td 
+        Sell
+    - companies.each_with_index do |company, i|
+      %tr{:id => i}
+        %td
+          = company
+        %td{:id => "price"}
+          = rand(100 + 1)
+        %td{:id => "tendency"}
+          = rand(100/100.0)
+        %td{:id => "held"}
+          0
+        %td.center{:width => "20px"}
+          %button.btn.btn-link{:type => 'button', :onclick => "Buy(#{i})"}
+            %i.fa.fa-plus.text-sucess
+        %td.center{:width => "20px"}
+          %button.btn.btn-link{:type => 'button', :onclick => "Sell(#{i})"}
+            %i.fa.fa-minus.text-danger
 %p{:id => "price"}
