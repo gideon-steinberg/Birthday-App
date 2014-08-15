@@ -1,2 +1,26 @@
-%div{:style => "color: #0000FF;background-color: #00FF00"}
-  Hello
+- @links = {"price" => "Current Stock Prices", "game" => "Game"}
+%ul.breadcrumb
+  - @links.each do |link, title|
+    %li
+      %a{:href => "/stocks/#{link}"}
+        = title
+
+%div{:style => "color: #000000;background-color: #6666FF"}
+  %table.table{:width => "100%"}
+    %thead
+    %tbody
+      %tr
+        %td
+          Stock Name
+        %td
+          Low Offer
+        %td
+          High Bid
+      - @stocks.sort.each do |stock, values|
+        %tr
+          %td
+            = stock.gsub ".NZ", ""
+          %td
+            = values[0]
+          %td
+            = values[1]
