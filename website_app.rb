@@ -1,7 +1,6 @@
 require 'rubygems'
 require 'sinatra'
 require 'Haml'
-require './helpers/sqlite.rb'
 require 'net/http'
 
 
