@@ -1,0 +1,10 @@
+- @links = {"price" => "Current Stock Prices", "game" => "Game"}
+%ul.breadcrumb
+  - @links.each do |link, title|
+    %li
+      %a{:href => "/stocks/#{link}"}
+        = title
+
+%script{:src => "/stocks/game.js", :type => "text/javascript"}
+
+%p{:id => "price"}
