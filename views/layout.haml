@@ -12,7 +12,6 @@
     %link{:href => "/vendor/fontawesome/css/font-awesome.min.css", :rel => "stylesheet"}/
     
   %body
-    - @links = {"awesome" => "Awesome", "skills" => "Skills", "medical" => "Medical Facts", "stories" => "Stories", "room" => "Room", "wishes" => "Birthday Wishes" ,"pictures" => "Pictures"}
     %ul.breadcrumb
       %li
         %a{:href => "/"}
@@ -27,6 +26,9 @@
         %a{:href => "/stocks/index"}
           Stocks
     - if @person
+      - @links = {"awesome" => "Awesome", "skills" => "Skills", "medical" => "Medical Facts", "stories" => "Stories", "room" => "Room", "wishes" => "Birthday Wishes" ,"pictures" => "Pictures"}
+      - if @person == "Barry"
+        - @links = {"awesome" => "Awesome", "skills" => "Skills", "stories" => "Stories", "wishes" => "Birthday Wishes" ,"pictures" => "Pictures"}
       %ul.breadcrumb
         - @links.each do |link, title|
           %li
