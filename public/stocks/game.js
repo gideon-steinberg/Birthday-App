@@ -12,7 +12,7 @@ $(document).ready(function(){
      } else if ( parseInt(price.text()) > 1){
        price.text(parseInt(price.text()) - 1);
      }
-     ran = (Math.floor(Math.random()*10) - 5) / 100;
+     ran = (Math.floor(Math.random()*11) - 5) / 100;
      newTendency = tendencyVal + ran;
      if (newTendency < 0.05){
        newTendency = 0.05;
