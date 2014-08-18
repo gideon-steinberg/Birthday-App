@@ -1,9 +1,5 @@
-- @links = {"button" => "Button", "simon" => "Simon Says"}
-%ul.breadcrumb
-  - @links.each do |link, title|
-    %li
-      %a{:href => "/games/#{link}"}
-        = title
+= haml :"/games/header"
+
 %link{:rel => "stylesheet", :type => "text/css", :href => "/games/button.css"}
 %script{:src => "/games/button.js", :type => "text/javascript"}
 

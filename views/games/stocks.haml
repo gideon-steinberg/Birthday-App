@@ -1,11 +1,6 @@
-- @links = {"price" => "Current Stock Prices", "game" => "Game"}
-%ul.breadcrumb
-  - @links.each do |link, title|
-    %li
-      %a{:href => "/stocks/#{link}"}
-        = title
+= haml :"/games/header"
 
-%script{:src => "/stocks/game.js", :type => "text/javascript"}
+%script{:src => "/games/stocks.js", :type => "text/javascript"}
 
 
 %table.table{:width => "100%"}

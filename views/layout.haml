@@ -23,8 +23,11 @@
         %a{:href => "/person/Barry"}
           Barry
       %li
-        %a{:href => "/stocks/index"}
+        %a{:href => "/stocks/price"}
           Stocks
+      %li
+        %a{:href => "/games/index"}
+          Games
     - if @person
       - @links = {"awesome" => "Awesome", "skills" => "Skills", "medical" => "Medical Facts", "stories" => "Stories", "room" => "Room", "wishes" => "Birthday Wishes" ,"pictures" => "Pictures"}
       - if @person == "Barry"

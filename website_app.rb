@@ -3,7 +3,6 @@ require 'sinatra'
 require 'Haml'
 require 'net/http'
 
-
 set :bind, "0.0.0.0"
 set :port, 80
 
@@ -27,11 +26,6 @@ get '/stocks/price' do
   end
   haml :'stocks/price'
 end
-
-get '/stocks/:name' do
-  page = params[:name]
-  haml :"stocks/#{page}"
-end 
 
 require './controllers/person.rb'
 require './controllers/games.rb'
