@@ -1,0 +1,47 @@
+button.top {
+  height: 150px;
+  width: 150px;
+  background-color: #FF0000;
+  border-radius: 15px;
+}
+
+button.top.hover {
+  background-color: #990000;
+}
+
+button.bottom {
+  height: 150px;
+  width: 150px;
+  background-color: #00FF00;
+  border-radius: 15px;
+}
+
+button.bottom.hover {
+  background-color: #009900;
+}
+
+button.left {
+  height: 150px;
+  width: 150px;
+  background-color: #4444FF;
+  border-radius: 15px;
+}
+
+button.left.hover {
+  background-color: #000099;
+}
+button.right {
+  height: 150px;
+  width: 150px;
+  background-color: #FF00FF;
+  border-radius: 15px;
+}
+
+button.right.hover {
+  background-color: #990099;
+}
+
+div.gameArea{
+  height: 500px;
+  width: 1000px;
+}

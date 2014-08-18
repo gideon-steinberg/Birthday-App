@@ -1,1 +1,25 @@
 = haml :"/games/header"
+
+%link{:rel => "stylesheet", :type => "text/css", :href => "/games/simon.css"}
+%script{:src => "/games/simon.js", :type => "text/javascript"}
+
+%p.endtext
+%div.gameArea
+  %table
+    %tr
+      %td
+      %td
+        %button.top
+      %td
+    %tr
+      %td
+        %button.left
+      %td.center.middleText
+        Showing Pattern
+      %td
+        %button.right
+    %tr
+      %td
+      %td
+        %button.bottom
+      %td
