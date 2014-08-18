@@ -12,14 +12,14 @@
     }
     
     function moveButton(button){
-        var X = random(0,300);
+        var X = random(0,800);
         var Y = random(0,300);
         var height = random(50,150);
         var width = random(50,150);
         button.style.height=height + "px";
         button.style.width=width + "px";
-        button.style.marginTop=X + "px";
-        button.style.marginLeft=Y + "px";
+        button.style.marginTop=Y + "px";
+        button.style.marginLeft=X + "px";
     }
 
     $(document).ready(function(){
