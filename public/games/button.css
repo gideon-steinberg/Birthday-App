@@ -1,0 +1,11 @@
+button.game {
+  height: 100px;
+  width: 200px;
+  margin-top: 10px;
+  margin-left: 50px;
+}
+
+div.gameArea{
+  height: 500px;
+  width: 500px;
+}

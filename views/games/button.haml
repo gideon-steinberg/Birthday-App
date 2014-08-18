@@ -1,0 +1,14 @@
+- @links = {"button" => "Button", "simon" => "Simon Says"}
+%ul.breadcrumb
+  - @links.each do |link, title|
+    %li
+      %a{:href => "/games/#{link}"}
+        = title
+%link{:rel => "stylesheet", :type => "text/css", :href => "/games/button.css"}
+%script{:src => "/games/button.js", :type => "text/javascript"}
+
+%p.score
+  Score = 0
+%div.gameArea
+  %button.game 
+    click me

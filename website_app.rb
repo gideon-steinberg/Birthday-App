@@ -34,3 +34,4 @@ get '/stocks/:name' do
 end 
 
 require './controllers/person.rb'
+require './controllers/games.rb'
