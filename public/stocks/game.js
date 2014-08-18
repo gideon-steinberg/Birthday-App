@@ -1,49 +1,81 @@
-$(document).ready(function(){
-  window.setInterval(function() {
-    company_number = parseInt($("#company_number").attr("value"));
-    for (i = 0; i < company_number; i++){
-      row = $("#" + i);
-      ran = Math.floor(Math.random()*100);
-      tendency = row.find("#tendency");
-      tendencyVal = parseFloat(tendency.text());
-      price = row.find("#price");
-      if (ran < (tendencyVal * 100)){
-        price.text(parseInt(price.text()) + 1);
-      } else if ( parseInt(price.text()) > 1){
-        price.text(parseInt(price.text()) - 1);
-      }
-      ran = (Math.floor(Math.random()*11) - 5) / 100;
-      newTendency = tendencyVal + ran;
-      if (newTendency < 0.05){
-        newTendency = 0.05;
-      } else if (newTendency > 0.95) {
-        newTendency = 0.95;
-      }
-      newTendency = ("" + newTendency).substring(0,4);
-      tendency.text(newTendency);
-    }  
-  }, 1000);
-});
+/*global $: false, jQuery: false */
+(function () {
+	function random(min, max) {
+		return Math.floor(Math.random() * (max - min + 1) + min);
+	}
 
-function Buy(company){
-  row = $("#" + company);
-  price = parseInt(row.find("#price").text());
-  held = row.find("#held");
-  money = parseInt($("#money").text());
-  if (money >= price){
-    $("#money").text(money - price);
-    held.text(parseInt(held.text()) + 1);
-  }
-}
+	var money = 1000;
+	var stocks = [];
 
-function Sell(company){
-  row = $("#" + company);
-  price = parseInt(row.find("#price").text());
-  held = row.find("#held");
-  heldAmount = parseInt(held.text());
-  money = parseInt($("#money").text());
-  if (heldAmount > 0){
-    $("#money").text(money + price);
-    held.text(heldAmount - 1);
-  }
-}
+	var i = 9;
+	while (i--) {
+		stocks.push({ 
+			price: random(60, 160), 
+			tendency: random(0, 100) / 100, 
+			held: 0 
+		});
+	}
+
+	function update() {
+		stocks.forEach(function (stock, idx) {
+			var ran = random(0, 100);
+			if (ran < (stock.tendency * 100)){
+				stock.price++;
+			} else if (stock.price > 1){
+				stock.price--;
+			}
+
+			ran = random(-5, 5) / 100;
+			stock.tendency += ran;
+			if (stock.tendency < 0.05){
+				stock.tendency = 0.05;
+			} else if (stock.tendency > 0.95) {
+				stock.tendency = 0.95;
+			}
+		});
+
+		redraw();
+	}
+
+	function redraw() {
+		$('#money').text(money);
+		stocks.forEach(function (stock, idx) {
+			var row = $('#'+idx);
+			row.find('#price').text(stock.price);
+			row.find('#tendency').text(stock.tendency.toFixed(2));
+			row.find('#held').text(stock.held);
+		});
+	}
+
+	function buy(company){
+		var stock = stocks[company];
+		if (money >= stock.price){
+			money -= stock.price;
+			stock.held++;
+			redraw();
+		}
+	}
+
+	function sell(company){
+		var stock = stocks[company];
+		if (stock.held > 0) {
+			money += stock.price;
+			stock.held--;
+			redraw();
+		}
+	}
+
+	$(document).ready(function(){
+		$('.buy-button').click(function () {
+			var idx = $(this).data('index');
+			buy(+idx);
+		});
+
+		$('.sell-button').click(function () {
+			var idx = $(this).data('index');
+			sell(+idx);
+		});
+
+		window.setInterval(update, 1000);
+	});
+}());

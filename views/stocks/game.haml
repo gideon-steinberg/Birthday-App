@@ -22,27 +22,26 @@
 - companies << ["Cats Inc", "Dogs Ltd", "Putter LLC", "Iron Corp", "Wood Foundation", "Hybrid Branch"]
 - companies << ["Birdy Partnership", "Bunker Traders", "Rough Trust"]
 - companies.flatten!
-%div{:id => "company_number", :value => companies.size}
 %p
   Note: Tendency is how likely the stock is to increase/decrease from 0 - 1
 %table.table{:width => "100%"}
   %thead
   %tbody
     %tr
-      %td
+      %th
         Name
-      %td
+      %th
         Price
-      %td
+      %th
         Tendency
-      %td
+      %th
         Number Held
-      %td
+      %th
         Buy
-      %td 
+      %th 
         Sell
     - companies.each_with_index do |company, i|
-      %tr{:id => i}
+      %tr.stock-row{:id => i}
         %td
           = company
         %td{:id => "price"}
@@ -52,8 +51,8 @@
         %td{:id => "held"}
           0
         %td.center{:width => "20px"}
-          %button.btn.btn-link{:type => 'button', :onclick => "Buy(#{i})"}
+          %button.btn.btn-link.buy-button{:type => 'button', :'data-index' => i }
             %i.fa.fa-plus.text-sucess
         %td.center{:width => "20px"}
-          %button.btn.btn-link{:type => 'button', :onclick => "Sell(#{i})"}
+          %button.btn.btn-link.sell-button{:type => 'button', :'data-index' => i }
             %i.fa.fa-minus.text-danger
