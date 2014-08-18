@@ -77,5 +77,6 @@
 		});
 
 		window.setInterval(update, 1000);
+        redraw();
 	});
 }());
