@@ -3,6 +3,8 @@ require 'sinatra'
 require 'Haml'
 require 'net/http'
 
+require_relative 'model/init.rb'
+
 set :bind, "0.0.0.0"
 set :port, 80
 
