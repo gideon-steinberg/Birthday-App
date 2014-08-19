@@ -19,4 +19,4 @@
               %button.btn.btn-link{:type => 'submit'}
                 %i.fa.fa-minus.text-danger
           %td
-            = row[:fact]
+            = Rack::Utils.escape_html(row[:fact])

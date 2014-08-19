@@ -18,7 +18,8 @@ get '/person/:person/:category' do
 end
 
 post '/person/:person/:category' do
-  $DB[:comment].insert(:person => params[:person], :category => params[:category], :fact => params[:fact], :disabled => 0)
+  fact = Rack::Utils.escape_html(params[:fact])
+  $DB[:comment].insert(:person => params[:person], :category => params[:category], :fact => fact, :disabled => 0)
   redirect :"/person/#{params[:person]}/#{params[:category]}"
 end
 
