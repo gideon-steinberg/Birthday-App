@@ -29,5 +29,5 @@ get '/stocks/price' do
   haml :'stocks/price'
 end
 
-require './controllers/person.rb'
-require './controllers/games.rb'
+require_relative 'controllers/person.rb'
+require_relative 'controllers/games.rb'
