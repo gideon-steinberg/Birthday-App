@@ -12,10 +12,6 @@ get '/' do
   haml :index
 end
 
-get '/:thing' do
-  redirect "/"
-end
-
 get '/stocks/price' do
   @stocks = {} 
   csv_string = Net::HTTP.get('download.finance.yahoo.com', '/d/quotes.csv?s=ASBPA.NZ+XRO.NZ+FSF.NZ+AIR.NZ+ASBPA.NZ+CEN.NZ+FBU.NZ+FPH.NZ+GNE.NZ+MELCA.NZ+SKC.NZ+TME.NZ+VCT.NZ+WBC.NZ+WHS.NZ&f=sb2b')
@@ -31,3 +27,8 @@ end
 
 require_relative 'controllers/person.rb'
 require_relative 'controllers/games.rb'
+require_relative 'controllers/fact.rb'
+
+get '/:thing' do
+  redirect "/"
+end

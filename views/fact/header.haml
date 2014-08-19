@@ -1,0 +1,6 @@
+- @links = {"new" => "New Fact", "show" => "Show Facts"}
+%ul.breadcrumb
+  - @links.each do |link, title|
+    %li
+      %a{:href => "/fact/#{link}"}
+        = title

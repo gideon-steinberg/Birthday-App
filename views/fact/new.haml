@@ -1,0 +1,22 @@
+= haml :"/fact/header"
+
+.row
+  .col-lg-6
+    %form{:action => "/fact/new", :method => "post"}
+      %table
+        %tr
+          %td
+            %strong
+              Fact
+          %td
+            %strong
+              Source
+          %td
+        %tr
+          %td
+            %input.form-control{:type => "text", :name => "fact"}
+          %td
+            %input.form-control{:type => "text", :name => "source"}
+          %td
+            %button.btn.btn-default{:type => "submit"}
+              Submit new fact
