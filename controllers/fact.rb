@@ -1,9 +1,5 @@
 require 'json'
 
-get '/fact' do
-  haml :"/fact/index"
-end
-
 get '/fact/new' do
   haml :"/fact/new"
 end
