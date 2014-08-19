@@ -28,15 +28,6 @@
       %li
         %a{:href => "/games/index"}
           Games
-    - if @person
-      - @links = {"awesome" => "Awesome", "skills" => "Skills", "medical" => "Medical Facts", "stories" => "Stories", "room" => "Room", "wishes" => "Birthday Wishes" ,"pictures" => "Pictures"}
-      - if @person == "Barry"
-        - @links = {"awesome" => "Awesome", "skills" => "Skills", "stories" => "Stories", "wishes" => "Birthday Wishes" ,"pictures" => "Pictures"}
-      %ul.breadcrumb
-        - @links.each do |link, title|
-          %li
-            %a{:href => "/person/#{@person}/#{link}"}
-              = title
     = yield 
 
   %p
