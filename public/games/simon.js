@@ -38,7 +38,7 @@
                 return;
             }
         } else {
-          $('p.endtext').text("You Lose");
+          $('p.endtext').text("You Lose, your score is " + (pattern.length -1));
           removeClicksFromButtons();
         }
     }
