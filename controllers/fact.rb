@@ -13,7 +13,17 @@ get '/fact/show' do
 end
 
 get '/fact/all' do
-  $DB[:data].all.to_json
+  $DB[:data].where(:disabled => 0).all.to_json
+end
+
+get '/fact/search/fact/:param' do
+  fact = params[:param]
+  $DB[:data].where(Sequel.like(:fact, "%#{fact}%") ,:disabled => 0).all.to_json
+end
+
+get '/fact/search/source/:param' do
+  source = params[:param]
+  $DB[:data].where(Sequel.like(:source, "%#{source}%") ,:disabled => 0).all.to_json
 end
 
 post '/fact/new' do
@@ -24,6 +34,6 @@ post '/fact/new' do
 end
 
 post '/fact/delete' do
-  $DB[:comment].where(:id => params[:id]).update(:disabled => 1)
+  $DB[:data].where(:id => params[:id]).update(:disabled => 1)
   redirect :"/fact/show"
 end

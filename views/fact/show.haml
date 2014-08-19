@@ -1,8 +1,18 @@
 = haml :"/fact/header"
 
+%script{:src => "/fact/show.js", :type => "text/javascript"}
+
 %div.form-group
-  %input.searchText
-  %button.searchButton
-    Search
+  %input.searchFactText
+  %button.searchFactButton
+    Search by Fact
+
+%div.form-group
+  %input.searchSourceText
+  %button.searchSourceButton
+    Search by Source    
+
+%button.allButton
+  Get all Facts
 
 %div.factArea
