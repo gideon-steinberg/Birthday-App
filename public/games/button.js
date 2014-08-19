@@ -23,7 +23,7 @@
     }
 
     $(document).ready(function(){
-        $('.game').click(function () {
+        $('button.game').click(function () {
             moveButton(this);
             increaseScore();
         });
