@@ -5,6 +5,7 @@
         if (status){
             comments = JSON.parse(data);
             draw(comments);
+            $('button.getComments').unbind();
         }
     }
     
