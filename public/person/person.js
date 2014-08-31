@@ -9,10 +9,13 @@
         }
     }
     
-    var action = ""
+    var action = "";
+    var person = "Jeremy";
+    
     function getComments(){
         password = $('input.password').val();
         action = $('form.newComment').attr("action");
+        person = action.split("/")[2];
         $.get( action + "/" + password,updateComments);
     }
     
@@ -20,7 +23,7 @@
     
     function drawComment(comment){
         commentHtml = commentHtml + "<tr><td width=\"20px\" class=\"center\">"
-        commentHtml = commentHtml + "<form method=\"post\" action=\"/person/Barry/delete/"+ comment.category +"\">"
+        commentHtml = commentHtml + "<form method=\"post\" action=\"/person/"+ person +"/delete/"+ comment.category +"\">"
         commentHtml = commentHtml + "<input type=\"hidden\" value=\""+ comment.id +"\" name=\"id\">"
         commentHtml = commentHtml + "<button type=\"submit\" class=\"btn btn-link\"><i class=\"fa fa-minus text-danger\"></i>"
         commentHtml = commentHtml + "</button></form></td>"
