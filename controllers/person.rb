@@ -13,8 +13,18 @@ end
 get '/person/:person/:category' do
   @person = params[:person]
   @category = params[:category]
-  @rows = $DB[:comment].where(:person => @person, :category => @category, :disabled => 0).order(:fact)
   haml :"/person/comment"
+end
+
+get '/person/:person/:category/:password' do
+  password = params[:password]
+  if (password == "blameestherforthis")
+    person = params[:person]
+    category = params[:category]
+    $DB[:comment].where(:person => person, :category => category, :disabled => 0).order(:fact).all.to_json
+  else
+    [].to_json
+  end
 end
 
 post '/person/:person/:category' do

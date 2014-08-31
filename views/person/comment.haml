@@ -1,24 +1,23 @@
 = haml :"/person/header"
 
+%script{:src => "/person/person.js", :type => "text/javascript"}
+
 %div{:style => "color: #0000FF;background-color: #00FF00"}
   .row
     .col-lg-6
-      %form.input-group{:action => "/person/#{@person}/#{@category}", :method => "post"}
+      %form.newComment.input-group{:action => "/person/#{@person}/#{@category}", :method => "post"}
         %span.input-group-btn
           %button.btn.btn-default{:type => "submit"}
             Submit new
         %input.form-control{:type => "text", :name => "fact"}
 
-  %table.table{:width => "100%"}
-    %thead
-    %tbody
-      - @rows.each do |row|
-        - puts row
-        %tr
-          %td.center{:width => "20px"}
-            %form{:action => "/person/#{@person}/delete/#{@category}", :method => "post"}
-              %input{:type => "hidden", :name => "id", :value => row[:id]}
-              %button.btn.btn-link{:type => 'submit'}
-                %i.fa.fa-minus.text-danger
-          %td
-            = row[:fact]
+
+        
+    %table.table{:width => "100%"}
+      %thead
+      %tbody.comments
+      
+%div.form-group
+  %input.password{:type => "password"}
+  %button.getComments
+    Enter password
