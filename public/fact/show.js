@@ -31,29 +31,65 @@
             $.get("/fact/search/source/" + searchText,updateFacts);
         }
     }
+
+    var tbody = "";
     
-    
-    var factHtml = ""
     function drawFact(fact){
-        var row = document.createElement("tr");
-        factHtml = factHtml + "<tr><td>" + fact.fact + "</td>";
-        factHtml = factHtml + "<td>" + fact.source + "</td><td>";
-        factHtml = factHtml + "<form method=\"post\" action=\"/fact/delete\">"
-        factHtml = factHtml + "<input type=\"hidden\" value=\"" + fact.id + "\" name=\"id\">"
-        factHtml = factHtml + "<button class=\"btn btn-link\" type=\"submit\">"
-        factHtml = factHtml + "<i class=\"fa fa-minus text-danger\"></i>"
-        factHtml = factHtml + "</button></form></tr>"
+        var tr = $(document.createElement("tr"));
+        
+        tr.append($(document.createElement("td")).html(fact.fact));
+        tr.append($(document.createElement("td")).html(fact.source));
+        
+        var td = $(document.createElement("td"));
+        
+        var form = $(document.createElement("form"));
+        form.attr({"method" : "post", "action" : "/fact/delete"});
+        
+        var input = $(document.createElement("input"));
+        input.attr({"type" : "hidden", "value" : fact.id, "name" : "id"});
+        form.append(input);
+        
+        var button = $(document.createElement("button"));
+        button.attr({"type" : "submit"});
+        button.addClass("btn").addClass("btn-link");
+        form.append(button);
+        
+        var itallics = $($(document.createElement('i')));
+        itallics.addClass("fa").addClass("fa-minus").addClass("text-danger");
+        form.append(itallics);
+        
+        td.append(form);
+        tr.append(td);
+        tbody.append(tr);
     }
     
     function redraw(){
         factArea = $('.factArea')
         factArea.html("");
-        factHtml = "";
-        factHtml = factHtml + "<table class=\"table\"><thead><tr><td><strong>Fact</strong></td>";
-        factHtml = factHtml + "<td><strong>Source</strong></td><td></td><tbody>";
+        
+        var table = $(document.createElement("table"));
+        table.addClass("table");
+        
+        var thead = $(document.createElement("thead"));
+        
+        var tr = $(document.createElement("tr"));
+        
+        var td = $(document.createElement("td"));
+        td.append($(document.createElement("strong")).html("Fact"));
+        tr.append(td);
+        
+        td = $(document.createElement("td"));
+        td.append($(document.createElement("strong")).html("Source"));
+        tr.append(td);
+        
+        thead.append(tr);
+        table.append(thead);
+        
+        tbody = $(document.createElement("tbody"));
+        
         facts.forEach(drawFact);
-        factHtml = factHtml + "</tbody></table>";
-        factArea.append(factHtml);
+        table.append(tbody);
+        factArea.append(table);
     }
 
     $(document).ready(function(){
