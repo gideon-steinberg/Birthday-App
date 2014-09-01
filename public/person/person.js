@@ -13,27 +13,43 @@
     var person = "Jeremy";
     
     function getComments(){
-        password = $('input.password').val();
+        var password = $('input.password').val();
         person = action.split("/")[2];
         $.get( action + "/" + password,updateComments);
     }
     
-    var commentHtml = "";
-    
     function drawComment(comment){
-        commentHtml = commentHtml + "<tr><td width=\"20px\" class=\"center\">"
-        commentHtml = commentHtml + "<form method=\"post\" action=\"/person/"+ person +"/delete/"+ comment.category +"\">"
-        commentHtml = commentHtml + "<input type=\"hidden\" value=\""+ comment.id +"\" name=\"id\">"
-        commentHtml = commentHtml + "<button type=\"submit\" class=\"btn btn-link\"><i class=\"fa fa-minus text-danger\"></i>"
-        commentHtml = commentHtml + "</button></form></td>"
-        commentHtml = commentHtml + "<td>" + comment.fact + "</td></tr>"
+        var tbody = $('tbody.comments');
+        var tr = $(document.createElement('tr'));
+        var formTd = $(document.createElement('td')).attr({"width" : "20px"}).addClass("center");
+        
+        var form = $(document.createElement('form'));
+        form.attr({"method" : "post", "action" : "/person/" + person + "/delete/" + comment.category});
+        
+        var input = $(document.createElement('input'));
+        input.attr({"type" : "hidden", "value" : comment.id, "name" : "id"});
+        
+        var button = $(document.createElement('button'));
+        button.attr({"type" : "submit"}).addClass("btn").addClass("btn-link");
+        
+        var itallics = $(document.createElement('i'));
+        itallics.addClass("fa").addClass("fa-minus").addClass("text-danger");
+        
+        var factTd = $(document.createElement('td')).html(comment.fact);
+        
+        button.append(itallics);
+        form.append(input);
+        form.append(button);
+        formTd.append(form);
+        tr.append(formTd);
+        tr.append(factTd);
+        tbody.append(tr);
     }
     
     function draw(comments){
-        tbody = $('tbody.comments')
+        var tbody = $('tbody.comments')
         tbody.html("");
         comments.forEach(drawComment);
-        tbody.append(commentHtml);
     }
 
     $(document).ready(function(){
