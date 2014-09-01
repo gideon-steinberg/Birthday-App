@@ -56,7 +56,7 @@
         
         var itallics = $($(document.createElement('i')));
         itallics.addClass("fa").addClass("fa-minus").addClass("text-danger");
-        form.append(itallics);
+        button.append(itallics);
         
         td.append(form);
         tr.append(td);
