@@ -14,7 +14,6 @@
     
     function getComments(){
         password = $('input.password').val();
-        action = $('form.newComment').attr("action");
         person = action.split("/")[2];
         $.get( action + "/" + password,updateComments);
     }
@@ -41,5 +40,10 @@
         $('button.getComments').click(function () {
             getComments();
         });
+        action = $('form.newComment').attr("action");
+        if (action.match("Barry")){
+            $('input.password').val("a");
+            $('button.getComments').click();
+        }
     });
 }());
